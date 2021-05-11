@@ -6,4 +6,5 @@ export default interface IBooksRepository {
   getBookByName(name: string): Promise<Book | undefined>;
   createNewBook(data: IBookDTO): Promise<Book>;
   findBooks(name: string): Promise<Book[] | []>;
+  getAllBooks(): Promise<Book[] | []>
 }

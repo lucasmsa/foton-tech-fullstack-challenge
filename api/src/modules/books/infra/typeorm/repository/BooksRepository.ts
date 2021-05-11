@@ -1,6 +1,5 @@
-import { getRepository, Repository } from "typeorm";
+import { getRepository, Repository, ILike } from "typeorm";
 import Book from "../entity/Book";
-import createTreeQueryBuilder from 'typeorm-query';
 import IBooksRepository from "../../../IRepository/IBooksRepository";
 import IBookDTO from "../../../DTOs/IBookDTO";
 
@@ -12,19 +11,16 @@ export default class BooksRepository implements IBooksRepository {
   }
 
   public async findBooks(name: string): Promise<Book[] | []> {
-    const books = await createTreeQueryBuilder<Book>()
-      .param('name', name)
-      .orderBy('name', "ASC")
-      .getMany()
+    const books = await this.ormRepository.find({ name: ILike(`%${name}%`) })
 
     return books
   }
 
-  public async createNewBook({ author, description, name }: IBookDTO): Promise<Book | undefined> {
+  public async createNewBook({ author, description, name }: IBookDTO): Promise<Book> {
     const book = this.ormRepository.create({ author, description, name })
     await this.ormRepository.save(book)
 
-    return book || undefined
+    return book
   }
 
   public async getBookByName(name: string): Promise<Book | undefined> {
@@ -37,5 +33,11 @@ export default class BooksRepository implements IBooksRepository {
     const book = await this.ormRepository.findOne(id)
 
     return book || undefined
+  }
+
+  public async getAllBooks(): Promise<Book[] | []> {
+    const books = await this.ormRepository.find()
+
+    return books
   }
 }
