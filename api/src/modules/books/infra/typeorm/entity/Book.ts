@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
-import { Length } from 'class-validator'
+import { Length, MaxLength, MinLength } from 'class-validator'
 
 @Entity('books')
 export default class Book {
@@ -15,8 +15,18 @@ export default class Book {
   author: string;
 
   @Column()
-  @Length(10)
+  @MinLength(10, {
+    message: 'Description cannot be that short!',
+  })
+  @MaxLength(300, {
+    message: 'Description is to long!',
+  })
   description: string;
+
+  @Column({
+    nullable: true
+  })
+  imageUrl: string;
 
   @CreateDateColumn()
   created_at: Date;

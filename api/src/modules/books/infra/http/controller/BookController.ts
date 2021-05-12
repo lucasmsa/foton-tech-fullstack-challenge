@@ -33,10 +33,10 @@ export default class BooksController {
 
   public async create(request: Request, response: Response): Promise<Response> {
     try {
-      const { author, description, name } = request.body
+      const { author, description, name, imageUrl } = request.body
       const createBookService = container.resolve(CreateBookService)
 
-      const book = await createBookService.run({ author, description, name })
+      const book = await createBookService.run({ author, description, name, imageUrl: imageUrl || null })
 
       return response.json(book)
     } catch (err) {

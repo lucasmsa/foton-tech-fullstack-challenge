@@ -16,8 +16,13 @@ export default class BooksRepository implements IBooksRepository {
     return books
   }
 
-  public async createNewBook({ author, description, name }: IBookDTO): Promise<Book> {
-    const book = this.ormRepository.create({ author, description, name })
+  public async createNewBook({ author, description, name, imageUrl }: IBookDTO): Promise<Book> {
+    const book = this.ormRepository.create({
+      author,
+      description,
+      name,
+      imageUrl: imageUrl || null
+    })
     await this.ormRepository.save(book)
 
     return book
