@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+import AppError from "../../../shared/error/AppError";
 import Book from "../infra/typeorm/entity/Book";
 import IBooksRepository from "../IRepository/IBooksRepository";
 
@@ -12,7 +13,7 @@ export default class GetBookByIdService {
 
   public async run(id: string): Promise<Book> {
     const book = await this.booksRepository.getBookById(id)
-    if (!book) throw new Error('Book with this ID does not exist!')
+    if (!book) throw new AppError('Book with this ID does not exist!', 404)
 
     return book
   }

@@ -4,6 +4,7 @@ import { container } from 'tsyringe'
 import GetBookByIdService from '../../../services/GetBookByIdService'
 import CreateBookService from '../../../services/CreateBookService'
 import FindBooksService from '../../../services/FindBooksService'
+import { checkBookCreationFieldErrors } from '../../../utils/checkBookCreationFieldErrors'
 
 export default class BooksController {
   public async index(request: Request, response: Response): Promise<Response> {
@@ -14,7 +15,7 @@ export default class BooksController {
 
       return response.json(books)
     } catch (err) {
-      return response.status(err.status || 500).json(err.message)
+      return response.status(400).json(err.message)
     }
   }
 
@@ -27,12 +28,13 @@ export default class BooksController {
 
       return response.json(book)
     } catch (err) {
-      return response.status(err.status || 500).json(err.message)
+      return response.status(400).json(err.message)
     }
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
     try {
+      checkBookCreationFieldErrors(request)
       const { author, description, name, imageUrl } = request.body
       const createBookService = container.resolve(CreateBookService)
 
@@ -40,7 +42,7 @@ export default class BooksController {
 
       return response.json(book)
     } catch (err) {
-      return response.status(err.status || 500).json(err.message)
+      return response.status(400).json(err.message)
     }
   }
 
@@ -53,7 +55,7 @@ export default class BooksController {
 
       return response.json(books)
     } catch (err) {
-      return response.status(err.status || 500).json(err.message)
+      return response.status(400).json(err.message)
     }
   }
 }
