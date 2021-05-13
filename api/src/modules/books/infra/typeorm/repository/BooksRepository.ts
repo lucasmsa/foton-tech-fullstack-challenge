@@ -1,7 +1,7 @@
 import { getRepository, Repository, ILike } from "typeorm";
 import Book from "../entity/Book";
 import IBooksRepository from "../../../IRepository/IBooksRepository";
-import IBookDTO from "../../../DTOs/IBookDTO";
+import ICreateBookDTO from "../../../DTOs/ICreateBookDTO";
 
 export default class BooksRepository implements IBooksRepository {
   private ormRepository: Repository<Book>
@@ -16,7 +16,7 @@ export default class BooksRepository implements IBooksRepository {
     return books
   }
 
-  public async createNewBook({ author, description, name, imageUrl }: IBookDTO): Promise<Book> {
+  public async createNewBook({ author, description, name, imageUrl }: ICreateBookDTO): Promise<Book> {
     const book = this.ormRepository.create({
       author,
       description,

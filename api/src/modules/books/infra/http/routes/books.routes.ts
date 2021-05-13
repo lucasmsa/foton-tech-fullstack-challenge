@@ -1,5 +1,5 @@
 import { Router, } from 'express'
-import { param, body } from 'express-validator'
+import { body } from 'express-validator'
 import BookController from '../controller/BookController'
 
 const booksRouter = Router()
@@ -16,7 +16,7 @@ booksRouter.post(
     .withMessage('Name field must be a string'),
   body('description')
     .isLength({ min: 10, max: 500 })
-    .withMessage('Description field must be have a length of at least 10 and at most 300'),
+    .withMessage('Description field must be have a length of at least 10 and at most 500'),
   body('name')
     .isString()
     .withMessage('Name field must be a string'),

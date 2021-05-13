@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request } from "express";
 import { validationResult } from "express-validator";
 import AppError from "../../../shared/error/AppError";
 
