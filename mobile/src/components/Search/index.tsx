@@ -1,16 +1,16 @@
 import React from 'react'
-import Search from '../../components/Search'
 import { View, Text } from 'react-native'
+import MagnifyingGlass from '../../assets/icons/magnifyingGlass.svg'
 import { Container } from './styles'
 
-const Home: React.FC = () => {
+const Search: React.FC = () => {
   return (
     <Container>
-      <Search />
+      <MagnifyingGlass />
       <Text>
-        OIERES 🍶
+        Olarsons
       </Text>
     </Container>)
 }
 
-export default Home
+export default Search
