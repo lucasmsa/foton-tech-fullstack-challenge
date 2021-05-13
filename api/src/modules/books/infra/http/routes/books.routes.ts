@@ -13,7 +13,7 @@ booksRouter.post(
   '/',
   body('author')
     .isString()
-    .withMessage('Name field must be a string'),
+    .withMessage('Author field must be a string'),
   body('description')
     .isLength({ min: 10, max: 500 })
     .withMessage('Description field must be have a length of at least 10 and at most 500'),
