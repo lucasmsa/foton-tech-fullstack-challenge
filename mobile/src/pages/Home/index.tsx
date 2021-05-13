@@ -1,15 +1,20 @@
 import React from 'react'
 import Search from '../../components/Search'
-import { View, Text } from 'react-native'
-import { Container } from './styles'
+import { Container, NameText, WelcomeContainer, WelcomeText } from './styles'
+import Book from '../../components/Book'
+import Footer from '../../components/Footer'
 
 const Home: React.FC = () => {
   return (
     <Container>
       <Search />
-      <Text>
-        OIERES 🍶
-      </Text>
+      <WelcomeContainer>
+        <WelcomeText>
+          Hi, <NameText>Mucas Loreira</NameText> 👋
+        </WelcomeText>
+      </WelcomeContainer>
+      <Book author={"J. K. Rowling"} name={"Harry Potter"} imageUrl={null} />
+      <Footer />
     </Container>)
 }
 
