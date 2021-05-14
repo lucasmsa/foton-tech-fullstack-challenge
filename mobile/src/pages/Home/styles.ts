@@ -1,5 +1,4 @@
 import styled from 'styled-components/native'
-import Footer from '../../components/Footer'
 
 export const Container = styled.View`
   display: flex;
@@ -23,4 +22,13 @@ export const WelcomeText = styled.Text`
 
 export const NameText = styled.Text`
   color: #fe6a78;
+`
+
+export const BooksScrollable = styled.ScrollView`
+  width: 360px;
+`
+
+export const BooksContainer = styled.View`
+  flex-direction: row;
+  flex-wrap: wrap;
 `

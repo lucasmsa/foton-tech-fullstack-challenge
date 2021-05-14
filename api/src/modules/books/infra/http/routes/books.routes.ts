@@ -1,5 +1,5 @@
 import { Router, } from 'express'
-import { body } from 'express-validator'
+import { body, param } from 'express-validator'
 import BookController from '../controller/BookController'
 
 const booksRouter = Router()

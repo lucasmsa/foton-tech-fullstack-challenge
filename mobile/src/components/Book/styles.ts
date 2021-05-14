@@ -4,6 +4,7 @@ export const Container = styled.View`
   display: flex;
   flex-direction: column;
   border-radius: 10px;
+  margin: 10px;
 `
 
 export const CoverImageContainer = styled.View`
@@ -28,6 +29,7 @@ export const TitleText = styled.Text`
   font-weight: bold;
   font-size: 12px;
   color: rgba(49, 49, 49, 0.8);
+  max-width: 100px;
   margin-bottom: 5px;
 `
 
@@ -35,5 +37,6 @@ export const AuthorText = styled.Text`
   font-style: normal;
   font-weight: 900;
   font-size: 10px;
+  max-width: 100px;
   color: rgba(49, 49, 49, 0.8);
 `

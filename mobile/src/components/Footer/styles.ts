@@ -1,5 +1,4 @@
 import styled from 'styled-components/native'
-import MagnifyingGlassIcon from '../../assets/icons/magnifyingGlass.svg'
 
 export const Container = styled.View`
   display: flex;

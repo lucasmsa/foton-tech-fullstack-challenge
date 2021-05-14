@@ -1,7 +1,7 @@
 import React from 'react'
 import { AuthorText, BookInformationContainer, Container, CoverImage, CoverImageContainer, TitleText } from './styles'
 
-interface BookProps {
+export interface BookProps {
   name: string;
   author: string;
   imageUrl: string | null;
@@ -11,7 +11,7 @@ const Book = ({ author, imageUrl, name }: BookProps) => {
   return (
     <Container>
       <CoverImageContainer>
-        <CoverImage source={require('../../assets/bookCover/small-cover.png')} />
+        <CoverImage source={imageUrl ? { uri: imageUrl } : require('../../assets/bookCover/small-cover.png')} />
       </CoverImageContainer>
       <BookInformationContainer>
         <TitleText>{name}</TitleText>
