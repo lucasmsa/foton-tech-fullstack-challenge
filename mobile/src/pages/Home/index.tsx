@@ -5,14 +5,10 @@ import Book, { BookProps } from '../../components/Book'
 import Footer from '../../components/Footer'
 import api from '../../services/api'
 import Button from '../../components/Button'
-
-interface Book extends BookProps {
-  id: string;
-  description: string;
-}
+import { SafeAreaView, StatusBar } from 'react-native'
 
 const Home: React.FC = () => {
-  const [books, setBooks] = useState<Book[] | []>([])
+  const [books, setBooks] = useState<Omit<BookProps, 'bookDetails'>[] | []>([])
   const [bookQuery, setBookQuery] = useState<string>('')
   const [loadMore, setLoadMore] = useState<boolean>(false)
 
@@ -28,42 +24,57 @@ const Home: React.FC = () => {
     loadBooks();
   }, [bookQuery])
 
+
   return (
-    <Container>
-      <Search
-        search
-        placeholder="Search books"
-        change={(bookSearch: string) => {
-          setLoadMore(false)
-          setBookQuery(bookSearch)
-        }}
-        value={bookQuery}
-      />
-      <WelcomeContainer>
-        <WelcomeText>
-          Hi, <NameText>Mucas Loreira</NameText> 👋
-        </WelcomeText>
-      </WelcomeContainer>
-      <BooksScrollable>
-        {!books.length && <NoBooksFoundText>No book was found</NoBooksFoundText>}
-        <BooksContainer>
-          {books.map(({ id, author, name, imageUrl }: Book, index: number) => {
-            if ((loadMore) || (bookQuery && index < 3) || (!bookQuery)) {
-              return (<Book key={id} author={author} name={name} imageUrl={imageUrl} />)
-            }
-          })
-          }
-        </BooksContainer>
-        {(!loadMore && books.length > 3 && !!(bookQuery)) && (
-          <Button
-            text="Load more ✚"
-            pressed={() => { setLoadMore(true) }}
-            loadMore
+    <>
+      <StatusBar barStyle='dark-content' backgroundColor='#fefaf6' />
+      <SafeAreaView style={{ flex: 0, backgroundColor: '#fefaf6' }} />
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+        <Container>
+          <Search
+            search
+            placeholder="Search books"
+            change={(bookSearch: string) => {
+              setLoadMore(false)
+              setBookQuery(bookSearch)
+            }}
+            value={bookQuery}
           />
-        )}
-      </BooksScrollable>
-      <Footer />
-    </Container>)
+          <WelcomeContainer>
+            <WelcomeText>
+              Hi, <NameText>Mucas Loreira</NameText> 👋
+            </WelcomeText>
+          </WelcomeContainer>
+          <BooksScrollable>
+            {!books.length && <NoBooksFoundText>No book was found</NoBooksFoundText>}
+            <BooksContainer>
+              {books.map(({ id, author, name, imageUrl }: BookProps, index: number) => {
+                if ((loadMore) || (bookQuery && index < 3) || (!bookQuery)) {
+                  return (
+                    <Book
+                      key={id}
+                      id={id}
+                      author={author}
+                      name={name}
+                      imageUrl={imageUrl}
+                    />)
+                }
+              })
+              }
+            </BooksContainer>
+            {(!loadMore && books.length > 3 && !!(bookQuery)) && (
+              <Button
+                text="Load more ✚"
+                pressed={() => { setLoadMore(true) }}
+                loadMore
+              />
+            )}
+          </BooksScrollable>
+          <Footer />
+        </Container>
+      </SafeAreaView>
+    </>
+  )
 }
 
 export default Home
