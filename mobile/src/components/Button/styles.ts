@@ -1,8 +1,12 @@
 import styled from 'styled-components/native'
 import { RectButton } from 'react-native-gesture-handler'
 
-export const ButtonContainer = styled(RectButton)`
-  width: 160px;
+interface ButtonProps {
+  loadMore: boolean;
+}
+
+export const ButtonContainer = styled(RectButton) <ButtonProps>`
+  width: ${props => (props.loadMore ? 160 : 336)}px;
   height: 50px;
   background: #fe6a78;
   border-radius: 16px;

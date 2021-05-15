@@ -1,15 +1,31 @@
 import React from 'react'
-import { TextInput } from 'react-native'
+import { Control, FieldValues, useController } from 'react-hook-form'
+import { ScrollView } from 'react-native'
 import { Container, Input } from './styles'
 
 interface FieldInputProps {
-  description: boolean
+  name: string;
+  description: boolean;
+  control: Control<FieldValues>;
 }
 
-const FieldInput = ({ description }: FieldInputProps) => {
+const FieldInput = ({ name, description, control }: FieldInputProps) => {
+  const { field } = useController({
+    control,
+    defaultValue: '',
+    name
+  })
   return (
-    <Container style={description && { height: 180 }}>
-      <TextInput style={description && { height: 180 }} />
+    <Container
+      description={description}
+    >
+      <Input
+        multiline={description && true}
+        numberOfLines={description ? 4 : 1}
+        value={field.value}
+        onChangeText={field.onChange}
+        description={description}
+      />
     </Container>)
 }
 

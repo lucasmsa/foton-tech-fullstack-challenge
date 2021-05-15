@@ -1,6 +1,8 @@
 import { RectButton } from 'react-native-gesture-handler'
 import CreateBookFieldInput from '../../components/FieldInput'
 import styled from 'styled-components/native'
+import { KeyboardAvoidingView } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler'
 
 export const Container = styled.View`
   display: flex;
@@ -10,11 +12,16 @@ export const Container = styled.View`
   height: 100%;
 `
 
+export const ContainerScrollView = styled.ScrollView`
+  width: 100%;
+`
+
 export const WelcomeContainer = styled.View`
   display: flex;
   width: 336px;
   margin-top: 30px;
   margin-bottom: 58px;
+  align-self: center;
 `
 
 export const AddBookText = styled.Text`
@@ -43,7 +50,8 @@ export const FieldsContainer = styled.View`
 `
 
 export const FieldOptionContainer = styled.View`
-  margin-top: 38px;
+  margin-top: 24px;
+  align-self: center;
 `
 
 

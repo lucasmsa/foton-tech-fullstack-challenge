@@ -7,9 +7,9 @@ interface ButtonProps {
   text: string
 }
 
-const ButtonProfilePicture = ({ pressed, text }: ButtonProps) => {
+const ButtonProfilePicture = ({ loadMore, pressed, text }: ButtonProps) => {
   return (
-    <ButtonContainer onPress={pressed}>
+    <ButtonContainer loadMore={loadMore} onPress={pressed}>
       <ButtonText>{text}</ButtonText>
     </ButtonContainer>
   )
