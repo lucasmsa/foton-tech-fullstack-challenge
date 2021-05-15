@@ -23,14 +23,14 @@ export const OptionContainerText = styled.Text`
   font-weight: normal;
   font-size: 10px;
   margin-top: 10px;
-  color: #313131;
+  color: #BFBEBF;
 `
 
 export const OptionContainerPlusText = styled.Text`
   font-style: normal;
   font-weight: normal;
   font-size: 10px;
-  color: #313131;
+  color: #BFBEBF;
 `
 
 export const PlusSign = styled.Text`

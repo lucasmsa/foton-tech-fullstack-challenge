@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Search from '../../components/Search'
-import { BooksContainer, BooksScrollable, Container, LoadMoreButton, NameText, NoBooksFoundText, WelcomeContainer, WelcomeText } from './styles'
+import { BooksContainer, BooksScrollable, Container, NameText, NoBooksFoundText, WelcomeContainer, WelcomeText } from './styles'
 import Book, { BookProps } from '../../components/Book'
 import Footer from '../../components/Footer'
 import api from '../../services/api'
@@ -32,7 +32,6 @@ const Home: React.FC = () => {
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
         <Container>
           <Search
-            search
             placeholder="Search books"
             change={(bookSearch: string) => {
               setLoadMore(false)
@@ -70,7 +69,7 @@ const Home: React.FC = () => {
               />
             )}
           </BooksScrollable>
-          <Footer />
+          <Footer selected={'Home'} />
         </Container>
       </SafeAreaView>
     </>
