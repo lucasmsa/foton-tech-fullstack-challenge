@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Text } from 'react-native'
-import { Circle, Container, DarkBlueBall, HeaderMask, HeaderContainer, PinkBall, SquigglyOvalBottom, SquigglyOvalTop, BallsContainer, CoverImageContainer, CoverImage, DetailsContainer } from './styles'
+import { ScrollView, Text } from 'react-native'
+import { Circle, Container, DarkBlueBall, HeaderMask, HeaderContainer, PinkBall, SquigglyOvalBottom, SquigglyOvalTop, BallsContainer, CoverImageContainer, CoverImage, DetailsContainer, TopContainer, LeftArrow, LeftArrowContainer, BookContentsContainer, BookAuthorText, BookDescriptionText, BookTitleText, ReadingOptionsContainer, BookDescriptionContainer, ReadingOptionsBlock, BookOpen, ReadingOptionsText, Headphones, VerticalLine, Share } from './styles'
 import api from '../../services/api'
-import { BookProps } from '../../components/Book'
+import Book, { BookProps } from '../../components/Book'
 import { bookDetailsPlaceholder } from '../../utils/bookDetailsPlaceholder'
+import { useNavigation } from '@react-navigation/native'
 
 interface IBook extends Omit<BookProps, 'bookDetails'> {
   description: string;
@@ -18,6 +19,7 @@ interface DetailsProps {
 }
 
 const Details = ({ route }: DetailsProps) => {
+  const navigation = useNavigation()
   const [book, setBook] = useState<IBook>(bookDetailsPlaceholder)
 
   useEffect(() => {
@@ -32,7 +34,12 @@ const Details = ({ route }: DetailsProps) => {
     <Container>
       <HeaderMask />
       <HeaderContainer>
-        <SquigglyOvalTop />
+        <TopContainer>
+          <LeftArrowContainer activeOpacity={0.4} onPress={() => navigation.goBack()} >
+            <LeftArrow />
+          </LeftArrowContainer>
+          <SquigglyOvalTop />
+        </TopContainer>
         <DetailsContainer>
           <BallsContainer>
             <PinkBall />
@@ -45,6 +52,29 @@ const Details = ({ route }: DetailsProps) => {
           <SquigglyOvalBottom width={24} />
         </DetailsContainer>
       </HeaderContainer>
+      <BookContentsContainer>
+        <BookTitleText>{book.name}</BookTitleText>
+        <BookAuthorText>{book.author}</BookAuthorText>
+        <BookDescriptionContainer>
+          <BookDescriptionText>{book.description}</BookDescriptionText>
+        </BookDescriptionContainer>
+      </BookContentsContainer>
+      <ReadingOptionsContainer>
+        <ReadingOptionsBlock>
+          <BookOpen />
+          <ReadingOptionsText>Read</ReadingOptionsText>
+        </ReadingOptionsBlock>
+        <VerticalLine />
+        <ReadingOptionsBlock>
+          <Headphones />
+          <ReadingOptionsText>Listen</ReadingOptionsText>
+        </ReadingOptionsBlock>
+        <VerticalLine />
+        <ReadingOptionsBlock>
+          <Share />
+          <ReadingOptionsText>Share</ReadingOptionsText>
+        </ReadingOptionsBlock>
+      </ReadingOptionsContainer>
     </Container >)
 }
 
