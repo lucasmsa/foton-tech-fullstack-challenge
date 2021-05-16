@@ -6,23 +6,24 @@ import Footer from '../../components/Footer'
 import api from '../../services/api'
 import Button from '../../components/Button'
 import { SafeAreaView, StatusBar } from 'react-native'
+import { useCallback } from 'react'
 
 const Home: React.FC = () => {
   const [books, setBooks] = useState<Omit<BookProps, 'bookDetails'>[] | []>([])
   const [bookQuery, setBookQuery] = useState<string>('')
   const [loadMore, setLoadMore] = useState<boolean>(false)
 
-  useEffect(() => {
-    async function loadBooks(): Promise<void> {
-      const response = bookQuery.length
-        ? await api.get(`/search/${bookQuery}`)
-        : await api.get('/')
+  const loadBooks = useCallback(async () => {
+    const response = bookQuery.length
+      ? await api.get(`/search/${bookQuery}`)
+      : await api.get('/')
 
-      setBooks(response.data)
-    }
-
-    loadBooks();
+    setBooks(response.data)
   }, [books])
+
+  useEffect(() => {
+    loadBooks()
+  }, [loadBooks])
 
 
   return (
