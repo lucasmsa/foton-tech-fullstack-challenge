@@ -1,8 +1,5 @@
-import { RectButton } from 'react-native-gesture-handler'
 import CreateBookFieldInput from '../../components/FieldInput'
 import styled from 'styled-components/native'
-import { KeyboardAvoidingView } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
 
 export const Container = styled.View`
   display: flex;
@@ -25,6 +22,7 @@ export const WelcomeContainer = styled.View`
 `
 
 export const AddBookText = styled.Text`
+  font-family: SF Pro Display;
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
@@ -34,9 +32,11 @@ export const AddBookText = styled.Text`
 
 
 export const FieldNameText = styled.Text`
-font-size: 16px;
-color: #000000;
-margin-bottom: 10px;
+  font-family: SF Pro Text;
+  font-size: 16px;
+  line-height: 18px;
+  color: #000000;
+  margin-bottom: 10px;
 `
 
 export const Optional = styled.Text`

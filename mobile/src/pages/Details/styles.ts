@@ -114,6 +114,7 @@ export const BookContentsContainer = styled.View`
 
 export const BookTitleText = styled.Text`
   max-width: 280px;
+  font-family: SF Pro Display;
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
@@ -125,6 +126,7 @@ export const BookTitleText = styled.Text`
 
 export const BookAuthorText = styled.Text`
   max-width: 300px;
+  font-family: SF Pro Display;
   font-size: 16px;
   line-height: 19px;
   letter-spacing: 0.670588px;
@@ -138,6 +140,7 @@ export const BookDescriptionContainer = styled.ScrollView`
 `
 
 export const BookDescriptionText = styled.Text`
+  font-family: SF Pro Text;
   font-size: 14px;
   line-height: 25px;
   letter-spacing: 0.2px;
@@ -163,6 +166,7 @@ export const ReadingOptionsBlock = styled.View`
 `
 
 export const ReadingOptionsText = styled.Text`
+  font-family: SF Pro Display;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;

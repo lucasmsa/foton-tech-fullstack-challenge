@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { ScrollView, Text } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import { Circle, Container, DarkBlueBall, HeaderMask, HeaderContainer, PinkBall, SquigglyOvalBottom, SquigglyOvalTop, BallsContainer, CoverImageContainer, CoverImage, DetailsContainer, TopContainer, LeftArrow, LeftArrowContainer, BookContentsContainer, BookAuthorText, BookDescriptionText, BookTitleText, ReadingOptionsContainer, BookDescriptionContainer, ReadingOptionsBlock, BookOpen, ReadingOptionsText, Headphones, VerticalLine, Share } from './styles'
 import api from '../../services/api'
-import Book, { BookProps } from '../../components/Book'
+import { BookProps } from '../../components/Book'
 import { bookDetailsPlaceholder } from '../../utils/bookDetailsPlaceholder'
 import { useNavigation } from '@react-navigation/native'
 

@@ -17,9 +17,11 @@ export const WelcomeContainer = styled.View`
 `
 
 export const WelcomeText = styled.Text`
+  font-family: SF Pro Display;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
+  color: #54565A;
 `
 
 export const NameText = styled.Text`

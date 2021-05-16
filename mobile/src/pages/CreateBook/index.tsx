@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback } from 'react'
 import { AddBookText, Container, FieldNameText, FieldOptionContainer, FieldsContainer, Optional, WelcomeContainer, FieldInput, ContainerScrollView } from './styles'
 import Footer from '../../components/Footer'
-import { KeyboardAvoidingView, Platform, SafeAreaView, StatusBar, TextInput } from 'react-native'
+import { KeyboardAvoidingView, SafeAreaView, StatusBar } from 'react-native'
 import { useForm } from 'react-hook-form'
 import Button from '../../components/Button'
 import api from '../../services/api'
@@ -23,7 +23,6 @@ const CreateBook: React.FC = () => {
   const { control, handleSubmit } = useForm()
 
   const onSubmit = useCallback(async ({ author, description, imageUrl, name }) => {
-    console.log({ author, description, imageUrl, name })
     try {
       await api.post('/', {
         author,

@@ -25,6 +25,7 @@ export const BookInformationContainer = styled.View`
 `
 
 export const TitleText = styled.Text`
+  font-family: SF Pro Display;
   font-style: normal;
   font-weight: bold;
   font-size: 12px;
@@ -34,6 +35,7 @@ export const TitleText = styled.Text`
 `
 
 export const AuthorText = styled.Text`
+  font-family: Roboto;
   font-style: normal;
   font-weight: 900;
   font-size: 10px;

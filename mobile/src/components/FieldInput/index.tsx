@@ -1,6 +1,5 @@
 import React from 'react'
 import { Control, FieldValues, useController } from 'react-hook-form'
-import { ScrollView } from 'react-native'
 import { Container, Input } from './styles'
 
 interface FieldInputProps {

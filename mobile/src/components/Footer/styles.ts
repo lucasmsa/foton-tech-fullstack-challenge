@@ -19,10 +19,12 @@ export const OptionContainer = styled.View`
 `
 
 export const OptionContainerText = styled.Text`
+  margin-top: 10px;
+  font-family: SF Pro Display;
   font-style: normal;
   font-weight: normal;
   font-size: 10px;
-  margin-top: 10px;
+  line-height: 12px;
   color: #BFBEBF;
 `
 

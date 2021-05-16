@@ -20,4 +20,7 @@ export const Input = styled.TextInput.attrs({
   placeholderTextColor: "#54565A"
 })`
   color: black;
+  font-family: SF Pro Text;
+  font-size: 16px;
+  line-height: 18px;
 `
