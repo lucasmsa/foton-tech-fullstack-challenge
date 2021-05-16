@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Circle, Container, DarkBlueBall, HeaderMask, HeaderContainer, PinkBall, SquigglyOvalBottom, SquigglyOvalTop, BallsContainer, CoverImageContainer, CoverImage, DetailsContainer, TopContainer, LeftArrow, LeftArrowContainer, BookContentsContainer, BookAuthorText, BookDescriptionText, BookTitleText, ReadingOptionsContainer, BookDescriptionContainer, ReadingOptionsBlock, BookOpen, ReadingOptionsText, Headphones, VerticalLine, Share } from './styles'
 import api from '../../services/api'
 import { BookProps } from '../../components/Book'
@@ -21,13 +21,14 @@ const Details = ({ route }: DetailsProps) => {
   const navigation = useNavigation()
   const [book, setBook] = useState<IBook>(bookDetailsPlaceholder)
 
+  const loadBookById = useCallback(async () => {
+    const response = await api.get(`/${route.params.id}`)
+    setBook(response.data)
+  }, [])
+
   useEffect(() => {
-    async function loadBookById(): Promise<void> {
-      const response = await api.get(`/${route.params.id}`)
-      setBook(response.data)
-    }
     loadBookById();
-  }, [book])
+  }, [loadBookById])
 
   return (
     <Container>
