@@ -5,11 +5,10 @@ import { Container, Input } from './styles'
 
 interface FieldInputProps {
   name: string;
-  description: boolean;
   control: Control<FieldValues>;
 }
 
-const FieldInput = ({ name, description, control }: FieldInputProps) => {
+const FieldInput = ({ name, control }: FieldInputProps) => {
   const { field } = useController({
     control,
     defaultValue: '',
@@ -17,14 +16,15 @@ const FieldInput = ({ name, description, control }: FieldInputProps) => {
   })
   return (
     <Container
-      description={description}
+      description={(name === 'description')}
     >
       <Input
-        multiline={description && true}
-        numberOfLines={description ? 4 : 1}
+        multiline={name === 'description' && true}
+        keyboardType={name === 'imageUrl' ? 'url' : 'default'}
+        numberOfLines={name === 'description' ? 4 : 1}
         value={field.value}
         onChangeText={field.onChange}
-        description={description}
+        description={name === 'description'}
       />
     </Container>)
 }

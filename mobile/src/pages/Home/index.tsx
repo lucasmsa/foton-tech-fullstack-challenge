@@ -22,7 +22,7 @@ const Home: React.FC = () => {
     }
 
     loadBooks();
-  }, [bookQuery])
+  }, [books])
 
 
   return (
