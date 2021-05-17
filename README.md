@@ -9,6 +9,7 @@
 <br>
 
 ## Back-end 〄
+**🚏 _Insomnia routes contained inside the `api-routes` folder_**
 ### How to run 🏃🏻
 - Run the docker container 🐳 with the command `docker run --name postgres -e POSTGRES_PASSWORD=password -p 5438:5432 -d postgres`
 - Go to the `api/` folder and run `npm install` in order to install the project's dependencies
