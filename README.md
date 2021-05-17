@@ -34,6 +34,6 @@
 - `axios` for handling api calls 
 - `styled-components` for the app's styling
 - `react-hook-form` for form-validation on the Create Book Screen 
-- `react-native-toast-message` for validation toast on the Create Book screen 
+- `react-native-toast-message` for validation toasts on the Create Book screen 
 
   > **_Since I've only tested the application on an iPhone 12 simulator, there might be some resposivity issues, mainly related to the `KeyboardAvoidingView` on the book creation page_**
